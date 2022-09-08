@@ -1,19 +1,14 @@
 from flask import Flask, request, render_template, send_from_directory
-# from functions import ...
+from loader import views_loader
+from main.views_main import main_blueprint
 
-POST_PATH = "posts.json"
+POST_PATH = "main/posts.json"
 UPLOAD_FOLDER = "uploads/images"
 
 app = Flask(__name__)
 
 
-@app.route("/")
-def page_index():
-    """
-    Страница поиска постов
-    """
-    return render_template('index.html')
-
+app.register_blueprint(main_blueprint)
 
 @app.route("/list")
 def page_tag():
