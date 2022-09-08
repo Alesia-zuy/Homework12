@@ -2,8 +2,9 @@ import logging
 from json import JSONDecodeError
 from flask import Blueprint,render_template, request
 
+from functions import save_picture, func_add_post
 
-loader_blueprint = Blueprint('loader_blueprint', __name__)
+loader_blueprint = Blueprint('loader_blueprint', __name__, template_folder='templaytes_loader')
 
 
 @loader_blueprint.route('/post')
@@ -19,7 +20,7 @@ def add_post():
     if not picture or not content:
         return 'Нет картинки и/или текста'
 
-    if picture.filename.split('.')[-1] not in ['.jpeg', '.png']:
+    if picture.filename.split('.')[-1] not in ['jpg', 'png']:
         return 'Неверное расширение файла'
 
     try:
@@ -29,5 +30,5 @@ def add_post():
         return 'Файл не найден'
     except JSONDecodeError:
         return 'Невалидный файл'
-    post: dict = add_post({'pic': picture_path, 'content': content})
+    post: dict = func_add_post({'pic': picture_path, 'content': content})
     return render_template('post_uploaded.html', post=post)

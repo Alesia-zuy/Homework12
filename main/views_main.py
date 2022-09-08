@@ -3,7 +3,7 @@ from functions import get_posts_by_word
 
 POST_PATH = "../posts.json"
 
-main_blueprint = Blueprint('main_blueprint', __name__, template_folder='template')
+main_blueprint = Blueprint('main_blueprint', __name__, template_folder='template', static_folder='static')
 
 
 @main_blueprint.route("/")
