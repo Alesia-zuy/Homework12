@@ -9,7 +9,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def page_index():
-    pass
+    """
+    Страница поиска постов
+    """
+    return render_template('index.html')
 
 
 @app.route("/list")
@@ -32,5 +35,5 @@ def static_dir(path):
     return send_from_directory("uploads", path)
 
 
-app.run()
-
+if __name__ == '__main__':
+    app.run()
