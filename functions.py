@@ -15,3 +15,10 @@ def get_posts_by_word(word):
         if word.lower() in post['content'].lower():
             result.append(post)
     return result
+
+
+def save_picture(picture):
+    filename = picture.filename
+    path = f'./uploads/images/{filename}'
+    picture.save(path)
+    return path
