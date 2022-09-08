@@ -1,7 +1,6 @@
 import logging
 from json import JSONDecodeError
-from flask import Blueprint,render_template, request
-
+from flask import Blueprint, render_template, request
 from functions import save_picture, func_add_post
 
 loader_blueprint = Blueprint('loader_blueprint', __name__, template_folder='templaytes_loader')
@@ -9,11 +8,17 @@ loader_blueprint = Blueprint('loader_blueprint', __name__, template_folder='temp
 
 @loader_blueprint.route('/post')
 def add_post_page():
+    """
+    Страница добавления нового поста
+    """
     return render_template('post_form.html')
 
 
 @loader_blueprint.route('/post', methods=['POST'])
 def add_post():
+    """
+    Метод Post для загрузки поста
+    """
     picture = request.files.get('picture')
     content = request.form.get('content')
 

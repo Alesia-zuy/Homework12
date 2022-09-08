@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, send_from_directory
+from flask import Flask, send_from_directory
 from loader.views_loader import loader_blueprint
 from main.views_main import main_blueprint
 
@@ -8,7 +8,7 @@ UPLOAD_FOLDER = "uploads/images"
 app = Flask(__name__)
 
 
-app.register_blueprint(main_blueprint)
+app.register_blueprint(main_blueprint) # регистрируем наши блупринты
 app.register_blueprint(loader_blueprint)
 
 

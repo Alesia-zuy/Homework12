@@ -16,6 +16,9 @@ def page_index():
 
 @main_blueprint.route("/search/")
 def page_search():
+    """
+    Вывод найденных постов
+    """
     s = request.args.get('s')
     posts = get_posts_by_word(s)
     return render_template('post_list.html', s=s, posts=posts)
